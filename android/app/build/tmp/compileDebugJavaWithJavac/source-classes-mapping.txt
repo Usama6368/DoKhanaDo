@@ -1,0 +1,14 @@
+com/dokhanado/ReactNativeFlipper.java
+ com.dokhanado.ReactNativeFlipper
+ com.dokhanado.ReactNativeFlipper$1
+ com.dokhanado.ReactNativeFlipper$2
+ com.dokhanado.ReactNativeFlipper$2$1
+com/dokhanado/MainApplication.java
+ com.dokhanado.MainApplication
+ com.dokhanado.MainApplication$1
+com/dokhanado/MainActivity.java
+ com.dokhanado.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/dokhanado/BuildConfig.java
+ com.dokhanado.BuildConfig

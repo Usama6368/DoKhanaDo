@@ -1,0 +1,6 @@
+module Pods_DoKhanaDo_DoKhanaDoTests {
+  umbrella header "Pods-DoKhanaDo-DoKhanaDoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

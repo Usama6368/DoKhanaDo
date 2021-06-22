@@ -1,0 +1,6 @@
+module Pods_DoKhanaDo {
+  umbrella header "Pods-DoKhanaDo-umbrella.h"
+
+  export *
+  module * { export * }
+}
