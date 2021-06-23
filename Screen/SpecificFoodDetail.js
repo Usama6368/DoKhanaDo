@@ -562,7 +562,7 @@ marginHorizontal:8,
 />
 
 </View>
-<View style={{width:'90%'}}>
+<View style={{width:'80%'}}>
     <View>
 
 <EngText>Muhammad Zayn</EngText>
@@ -637,7 +637,7 @@ uri:
 />
 
 </View>
-<View style={{width:'90%'}}>
+<View style={{width:'80%'}}>
 <View>
 
 <EngText>Muhammad Zayn</EngText>
