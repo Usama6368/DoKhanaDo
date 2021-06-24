@@ -15,8 +15,8 @@ import colors from "../Config/colors";
 import * as yup from "yup";
 
 export default function Register() {
-  const [hidePass, setHidePass] = useState(false);
-  const [hideConfirmPass, setHideConfirmPass] = useState(false);
+  const [hidePass, setHidePass] = useState(true);
+  const [hideConfirmPass, setHideConfirmPass] = useState(true);
 
   const showPassword = () => {
     setHidePass(!hidePass);
@@ -47,23 +47,28 @@ export default function Register() {
                 confirmpassword: "",
                 address: "",
               }}
+              onSubmit={(values)=>{
+                console.log(values)
+              }}
               validationSchema={yup.object().shape({
                 username: yup
                   .string()
-                  .min(6, "Username must have 6 characters")
-                  .max(10, "Username should not exceed 10 characters")
-                  .required("Username is a required field")
+                  .min(6)
+                  .max(10)
+                  .required()
                   .label("Username"),
                 email: yup.string().email().required().label("Email"),
                 password: yup
                   .string()
-                  .min(6, "Password must have 6 characters")
-                  .max(10, "Password should not exceed 10 characters")
-                  .required("Password is a required field"),
-                confirmPassword: yup
+                  .min(6)
+                  .max(10)
+                  .required()
+                  .label('Password'),
+                confirmpassword: yup
                   .string()
-                  .required("Confirm Password is a required field")
-                  .oneOf([yup.ref("password")], "Password is not match"),
+                  .required()
+                  .oneOf([yup.ref("password")], "Password is not match")
+                  .label('Confirm Password'),
               })}
             >
               {({
@@ -96,6 +101,7 @@ export default function Register() {
                     />
                     <TextInput
                       placeholder="User Name"
+                      placeholderTextColor={colors.grey}
                       value={values.username}
                       onChangeText={handleChange("username")}
                       autoCapitalize="none"
@@ -127,6 +133,7 @@ export default function Register() {
                     />
                     <TextInput
                       placeholder="Email"
+                      placeholderTextColor={colors.grey}
                       value={values.email}
                       onChangeText={handleChange("email")}
                       autoCapitalize="none"
@@ -158,6 +165,7 @@ export default function Register() {
                     />
                     <TextInput
                       placeholder="Password"
+                      placeholderTextColor={colors.grey}
                       value={values.password}
                       onChangeText={handleChange("password")}
                       autoCapitalize="none"
@@ -198,6 +206,7 @@ export default function Register() {
                     />
                     <TextInput
                       placeholder="Confirm Password"
+                      placeholderTextColor={colors.grey}
                       value={values.confirmpassword}
                       onChangeText={handleChange("confirmpassword")}
                       autoCapitalize="none"
@@ -303,6 +312,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderWidth: 0.5,
     width: "80%",
+    height:50,
     alignSelf: "center",
     alignItems: "center",
     marginVertical: 4,

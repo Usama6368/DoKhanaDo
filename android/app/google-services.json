@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "343152738170",
+    "project_id": "dokhanado-af436",
+    "storage_bucket": "dokhanado-af436.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343152738170:android:f8392999d5055cd44fa0c3",
+        "android_client_info": {
+          "package_name": "com.dokhanado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343152738170-tllo5dr0c9jcg01ub39dbbivvumr96aa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf7lgfHNckoY9OY0Qgosb2Mkdx7D1pFWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343152738170-tllo5dr0c9jcg01ub39dbbivvumr96aa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "343152738170-0n7rmr6hhetae1ul4jomclrjll76n5c0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.DoKhanaDo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

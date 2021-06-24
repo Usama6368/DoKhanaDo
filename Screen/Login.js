@@ -40,14 +40,19 @@ export default function Login() {
                 email: "",
                 password: "",
               }}
+              onSubmit={(values)=>{
+                console.log(values)
+              }
+              }
               validationSchema={yup.object().shape({
                 email: yup.string().email().required().label("Email"),
 
                 password: yup
                   .string()
-                  .min(6, "Password must have 6 characters")
-                  .max(10, "Password should not exceed 10 characters")
-                  .required("Password is a required field"),
+                  .min(6)
+                  .max(10)
+                  .required()
+                  .label('Password'),
               })}
             >
               {({
@@ -80,6 +85,7 @@ export default function Login() {
                     />
                     <TextInput
                       placeholder="Email"
+                      placeholderTextColor={colors.grey}
                       value={values.email}
                       onChangeText={handleChange("email")}
                       autoCapitalize="none"
@@ -96,7 +102,7 @@ export default function Login() {
                       styles.fields,
                       {
                         borderColor:
-                          touched.username && errors.username
+                          touched.password && errors.password
                             ? colors.tomato
                             : colors.lightBlack,
                       },
@@ -111,6 +117,7 @@ export default function Login() {
                     />
                     <TextInput
                       placeholder="Password"
+                      placeholderTextColor={colors.grey}
                       value={values.password}
                       onChangeText={handleChange("password")}
                       autoCapitalize="none"
@@ -214,6 +221,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderWidth: 0.5,
     width: "80%",
+    height:50,
     alignSelf: "center",
     alignItems: "center",
     marginVertical: 4,

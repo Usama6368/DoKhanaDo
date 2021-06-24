@@ -8,6 +8,9 @@ import SpecificFoodDetail from "./Screen/SpecificFoodDetail";
 import Checkouts from "./Screen/Checkouts";
 import OrderStatus from "./Screen/OrderStatus";
 import Tracking from './Screen/Tracking'
+import DeliveryTracking from "./Screen/DeliverTracking";
+import Login from "./Screen/Login";
+import Register from "./Screen/Register";
 // import Tracking from './Screen/Tracking'
 function App(props) {
   return (
@@ -18,12 +21,15 @@ function App(props) {
         marginTop: Platform.OS == "ios" ? getStatusBarHeight() : 0,
       }}
     >
-    <Tracking/>
+      {/* <Login/> */}
+      <Register/>
+    {/* <Tracking/> */}
       {/* <SpecificFoodDetail /> */}
       {/* <Home/> */}
       {/* {/* <Search/> */}
       {/* <Checkouts/>  */}
       {/* <OrderStatus/> */}
+      {/* <DeliveryTracking/> */}
     </SafeAreaView>
   );
 }

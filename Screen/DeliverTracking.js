@@ -13,7 +13,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from '@react-native-community/geolocation';
 import database from '@react-native-firebase/database';
 
-function Tracking(props) {
+function DeliveryTracking(props) {
   var {width, height} = Dimensions.get('window');
   let apikey = 'AIzaSyC85SGQeKy2psj2VdWbSxkYAX1UN2xQeR4';
 
@@ -29,81 +29,11 @@ function Tracking(props) {
   const [currentLatitude, setCurrentLatitude] = useState('');
   const [locationStatus, setLocationStatus] = useState('');
 
-  const getOneTimeLocation = () => {
-    setLocationStatus('Getting Location ...');
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      position => {
-        console.log('getCurrent POsition', position);
-        setLocationStatus('You are Here');
-
-        //getting the Longitude from the location json
-        const currentLongitudee = JSON.parse(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitudee = JSON.parse(position.coords.latitude);
-
-        //Setting Longitude state
-        setCurrentLongitude(currentLongitudee);
-
-        //Setting Longitude state
-        setCurrentLatitude(currentLatitudee);
-      },
-      error => {
-        setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000,
-      },
-    );
-  };
   console.log('Current Longitude', currentLongitude);
   console.log('Current Latitude', currentLatitude);
 
-  const subscribeLocationLocation = () => {
-    getOneTimeLocation();
-    watchID = Geolocation.watchPosition(
-      position => {
-        //Will give you the location on location change
 
-        setLocationStatus('You are Here');
-        console.log('Subscribe Current Position', position);
 
-        //getting the Longitude from the location json
-        const currentLongitude = JSON.parse(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = JSON.parse(position.coords.latitude);
-
-        //Setting Longitude state
-        setCurrentLongitude(currentLongitude);
-
-        //Setting Latitude state
-        setCurrentLatitude(currentLatitude);
-
-        firebasedatapost(currentLatitude,currentLongitude)
-      },
-      error => {
-        setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        maximumAge: 1000,
-      },
-    );
-  };
-
-  const firebasedatapost = (lat,long) => {
-    database()
-  .ref('/user')
-  .set({
-    latitude : lat,
-    longitude : long,
-  })
-
-  }
 
   const mapview = useRef();
 
@@ -146,8 +76,6 @@ function Tracking(props) {
 
   const requestLocationPermission = async () => {
     if (Platform.OS === 'ios') {
-      getOneTimeLocation();
-      subscribeLocationLocation();
     } else {
       try {
         const granted = await PermissionsAndroid.request(
@@ -169,24 +97,21 @@ function Tracking(props) {
       }
     }
   };
+  const firebasedatapost = () => {
+    database()
+  .ref('/user')
+  .on('value', snapshot => {
+    console.log('User data: ', snapshot.val().latitude);
+    setCurrentLongitude(snapshot.val().longitude)
+    setCurrentLatitude(snapshot.val().latitude)
+  });
+
+
+  }
   useEffect(() => {
     requestLocationPermission();
 
-    let fromloc = {latitude: 31.4716, longitude: 74.3558};
-    let toloc = {latitude: 31.4672, longitude: 74.2659};
-
-    let mapRegion = {
-      latitude: (31.4716 + 31.4672) / 2, //31.4708
-      longitude: (74.3558 + 74.2659) / 2, //74.3529
-      latitudeDelta: Math.abs(31.4716 - 31.4672) * 2, //0.0032
-      longitudeDelta: Math.abs(74.3558 - 74.2659) * 2, // 0.0116
-    };
-
-    setFromLocation(fromloc);
-    setToLocation(toloc);
-    setRegion(mapRegion);
-    setStreetName('B Block Model Town');
-    setRestaurant('BBQ Restaurent');
+    firebasedatapost()
     return () => {
       Geolocation.clearWatch(watchID);
     };
@@ -455,4 +380,4 @@ function Tracking(props) {
   );
 }
 
-export default Tracking;
+export default DeliveryTracking;
