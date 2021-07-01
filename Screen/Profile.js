@@ -88,51 +88,58 @@ export default function Profile({ navigation }) {
         </View>
       </View>
       <View style={styles.options}>
-        {data.map((d, index) => (
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: 15,
-            }}
-            key={index}
-          >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={{ marginTop: 25, padding: 5 }}>
+          {data.map((d, index) => (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: 15,
+              }}
+              key={index}
+            >
               <View
                 style={{
-                  backgroundColor: d.backgroundColor,
-                  marginRight: 10,
-                  borderRadius: 4,
-                  justifyContent: "center",
+                  flexDirection: "row",
                   alignItems: "center",
-                  padding: 5,
                 }}
               >
-                <Icon
-                  onPress={() => navigation.navigate(d.screenName)}
+                <View
                   style={{
-                    padding: 4,
-                    borderRadius: 6,
+                    backgroundColor: d.backgroundColor,
+                    marginRight: 10,
+                    borderRadius: 4,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: 5,
                   }}
-                  color={colors.white}
-                  size={20}
-                  name={d.iconName}
-                  type={d.iconType}
+                >
+                  <Icon
+                    onPress={() => navigation.navigate(d.screenName)}
+                    style={{
+                      padding: 4,
+                      borderRadius: 6,
+                    }}
+                    color={colors.white}
+                    size={20}
+                    name={d.iconName}
+                    type={d.iconType}
+                  />
+                </View>
+                <EngText>{d.title}</EngText>
+              </View>
+              <View>
+                <Icon
+                  name="chevron-small-right"
+                  type="entypo"
+                  size={24}
+                  color={colors.lightBlack}
                 />
               </View>
-              <EngText>{d.title}</EngText>
             </View>
-            <View>
-              <Icon
-                name="chevron-small-right"
-                type="entypo"
-                size={24}
-                color={colors.lightBlack}
-              />
-            </View>
-          </View>
-        ))}
+          ))}
+        </View>
         <View style={styles.version}>
           <EngText>Version 1.0.0</EngText>
         </View>
@@ -182,6 +189,8 @@ const styles = StyleSheet.create({
   options: {
     flex: 2,
     backgroundColor: colors.white,
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
   },
   version: {
     flex: 1,

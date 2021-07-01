@@ -1,24 +1,16 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  StatusBar,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { Card, Icon } from "react-native-elements";
+import { Icon } from "react-native-elements";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import EngText from "../CustomComponents/EngText";
-import colors from "../Config/colors";
-import SubHeading from "../CustomComponents/SubHeading";
 import Heading from "../CustomComponents/Heading";
+import SubHeading from "../CustomComponents/SubHeading";
+import colors from "../Config/colors";
 
-export default function ProfileDetail() {
+function ProfileDetail() {
   return (
-    <>
-      <StatusBar backgroundColor={colors.tomato} barStyle="light-content" />
-      <View style={{ flex: 1, marginTop: 30 }}>
+    <View style={styles.container}>
+      <View style={{ flex: 2, marginBottom: -60 }}>
         <View
-          onPress={() => console.log("hjajhjh")}
           style={{
             alignSelf: "center",
             marginTop: 30,
@@ -42,12 +34,13 @@ export default function ProfileDetail() {
           />
 
           <TouchableOpacity
+            activeOpacity={0.9}
             style={{
               marginLeft: 95,
               marginTop: -35,
             }}
           >
-            <TouchableOpacity
+            <View
               style={{
                 backgroundColor: colors.tomato,
                 width: 40,
@@ -63,14 +56,68 @@ export default function ProfileDetail() {
                 type="ant-design"
                 size={24}
                 raised={true}
-                color={colors.tomato}
+                color={colors.orange}
               />
-            </TouchableOpacity>
+            </View>
           </TouchableOpacity>
         </View>
-
-        <Card containerStyle={{ borderRadius: 10, marginTop: -80 }}>
-          <View style={{ marginTop: 80 }}></View>
+      </View>
+      <View style={styles.container2}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginVertical: 20,
+          }}
+        >
+          <View style={styles.statusItemView}>
+            <Heading
+              style={{ color: colors.white, fontSize: 18, fontWeight: "600" }}
+            >
+              2
+            </Heading>
+            <EngText style={{ color: colors.white }}>Pending</EngText>
+          </View>
+          <View style={styles.statusItemView}>
+            <Heading
+              style={{ color: colors.white, fontSize: 18, fontWeight: "600" }}
+            >
+              2
+            </Heading>
+            <EngText style={{ color: colors.white }}>Completed</EngText>
+          </View>
+          <View style={styles.statusItemView}>
+            <Heading
+              style={{ color: colors.white, fontSize: 18, fontWeight: "600" }}
+            >
+              4
+            </Heading>
+            <EngText style={{ color: colors.white }}>Total</EngText>
+          </View>
+        </View>
+      </View>
+      <View style={styles.container3}>
+        <SubHeading
+          style={{
+            textAlign: "center",
+            marginTop: 20,
+            fontSize: 22,
+            fontWeight: "bold",
+          }}
+        >
+          Profile Detail
+        </SubHeading>
+        <View
+          style={{
+            borderWidth: 1.4,
+            width: "30%",
+            alignSelf: "center",
+            borderRadius: 10,
+            borderColor: colors.orange,
+            marginTop: 4,
+          }}
+        />
+        <View style={{ marginTop: 30, paddingHorizontal: 20 }}>
           <View style={styles.input}>
             <EngText style={styles.title}>Username</EngText>
             <Heading style={styles.description}>Cameron Cook</Heading>
@@ -89,13 +136,65 @@ export default function ProfileDetail() {
               Lahore #54000
             </Heading>
           </View>
-        </Card>
+        </View>
       </View>
-    </>
+    </View>
   );
 }
 
+export default ProfileDetail;
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  container1: {
+    flex: 1,
+    marginVertical: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: colors.white,
+    paddingVertical: 20,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "500",
+    textAlign: "center",
+  },
+  container2: {
+    flex: 3,
+    marginVertical: 20,
+    backgroundColor: colors.orange,
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+    padding: 20,
+  },
+  container3: {
+    flex: 5,
+    marginTop: -70,
+    backgroundColor: colors.white,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+  },
+  statusItemView: {
+    width: 100,
+    height: 100,
+    borderRadius: 20,
+    backgroundColor: colors.lightBlack,
+    opacity: 0.8,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    elevation: 4,
+    marginTop: 40,
+  },
   input: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -109,7 +208,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     width: "70%",
-    textAlign: "center",
+    textAlign: "right",
     color: colors.black,
     fontWeight: "600",
   },
@@ -117,7 +216,7 @@ const styles = StyleSheet.create({
     width: 140,
     height: 140,
     borderRadius: 70,
-    borderWidth: 2,
-    borderColor: colors.tomato,
+    borderWidth: 1,
+    borderColor: colors.orange,
   },
 });
