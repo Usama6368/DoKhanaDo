@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
     padding: 20,
+    zIndex:-1
   },
   container3: {
     flex: 5,
