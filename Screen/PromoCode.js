@@ -67,10 +67,12 @@ export default function PromoCode() {
                 },
               ]}
             >
+              <View style={styles.leftInnerView}>
               <EngText style={styles.leftVewText}>
                 Discount{`\n`}
                 {d.discount} %
               </EngText>
+              </View>
             </View>
             <View
               style={[
@@ -148,12 +150,19 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   },
-  leftVewText: {
+  leftInnerView:{
     transform: [{ rotate: "270deg" }],
-    color: "white",
+    color:colors.white,
+    alignItems:'center',
+    justifyContent:'center',
+    flex:1
+  },
+  leftVewText: {
+    //transform: [{ rotate: "270deg" }],
+    color:colors.white,
     textAlign: "center",
-    textAlignVertical: "center",
-    flex: 1,
+    //textAlignVertical: "center",
+    //flex: 1,
     fontSize: 13,
     fontWeight: "bold",
   },
@@ -195,11 +204,13 @@ const styles = StyleSheet.create({
     height: 30,
     width: 80,
     borderRadius: 4,
+    justifyContent:'center',
+    alignItems:'center'
   },
   btnText: {
     color: colors.white,
-    textAlign: "center",
-    textAlignVertical: "center",
-    flex: 1,
+    //textAlign: "center",
+    //textAlignVertical: "center",
+    //flex: 1,
   },
 });
